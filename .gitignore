@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+
+# TypeScript
+*.js
+*.js.map
+*.tsbuildinfo
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+package-lock.json
+yarn.lock
