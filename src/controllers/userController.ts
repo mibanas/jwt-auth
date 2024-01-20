@@ -8,7 +8,7 @@ class userController {
     async register(req: Request, res: Response) {
         
         try {
-            const { username, password, completName, email, role } = req.body;
+            const { userName, password, completName, email, role } = req.body;
             const existingUser = await userModel.findOne({ email });        
             if (existingUser) {
                 return res.status(400).json({ 
@@ -19,7 +19,7 @@ class userController {
             const hashedPassword = await bcrypt.hash(password, 10);
             
             const newUser = await userModel.create({
-                username,
+                userName,
                 password: hashedPassword,
                 email,
                 completName,
@@ -59,7 +59,9 @@ class userController {
                 
                 const secret: any = process.env.SECRET_KEY
                 const payload = {
-                    name: user.email
+                    name: user.userName,
+                    email: user.email,
+                    role: user.role
                 }
                 const options: SignOptions = {
                     expiresIn: '1h',
@@ -71,7 +73,7 @@ class userController {
             return res.status(200).json({
                 success: true,
                 message: "User is authenticated",
-                user: user.userName, 
+                user: user.userName,
                 token,
             })
           }
