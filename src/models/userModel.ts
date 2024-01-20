@@ -10,10 +10,20 @@ const userSchema = new Schema({
         require : true,
         unique: true
     },
+    email : {
+        type : String,
+        require : true,
+        unique: true
+    },
     password : {
         type : String,
-        require : true
-    }
+        require : true,
+    },
+    role: {
+        type: String,
+        enum: ['Administrator', 'Responsible', 'User'],
+        required: true,
+      },
 })
 
 const userModel = model('Users', userSchema)
