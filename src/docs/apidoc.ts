@@ -5,6 +5,7 @@ import { getAllCourses, getCourseById, addCourse, updateCourse, deleteCourse } f
 // env variable 
 config()
 const port = process.env.PORT || 3010
+const version = process.env.BASE_URL
 
 
 const apiDocumentation = {
@@ -21,7 +22,7 @@ const apiDocumentation = {
     },
     servers: [
       {
-        url: `http://localhost:${port}/`,
+        url: `http://localhost:${port}/${version}`,
         description: 'Local Server',
       },
       {
@@ -65,6 +66,18 @@ const apiDocumentation = {
                     courseImage: { type: 'string' },
                 },
             },
+            User: {
+                type: 'object',
+                properties: {
+                    userName: { type: 'string' },
+                    password: { type: 'string' },
+                    completName: { type: 'string' },
+                    email: { type: 'string' },
+                    role: { type: 'string' },
+                },
+                required: ['userName', 'password', 'completName', 'email', 'role'],
+            },
+
         },
         securitySchemes: {
             bearerAuth: {
