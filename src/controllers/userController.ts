@@ -12,6 +12,7 @@ class userController {
             const existingUser = await userModel.findOne({ email });        
             if (existingUser) {
                 return res.status(400).json({ 
+                    success : false,
                     message: 'Username already exists.' 
                 })
             }
@@ -27,12 +28,14 @@ class userController {
             })
             
             res.status(201).json({ 
+                success : false,
                 message: 'Registration successful.', 
                 user: newUser 
             })
 
         } catch (error: any) {
             res.status(500).json({ 
+                success : false,
                 message: 'Internal server error.' ,
                 error : error.message
             })
