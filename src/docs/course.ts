@@ -6,7 +6,7 @@ const courseModelDefinition = {
       courseImage: { type: 'string' },
     },
   };
-  
+
 // Swagger definition for get all courses operation
 const getAllCourses = {
     tags: ['Courses'],

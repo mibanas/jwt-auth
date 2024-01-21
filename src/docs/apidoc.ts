@@ -38,10 +38,10 @@ const apiDocumentation = {
       },
     ],
     paths: {
-        register: {
+        '/register': {
             post: registerUser,
         },
-        login: {
+        '/login': {
             post : loginUser,
         },
         '/courses': {
@@ -54,7 +54,18 @@ const apiDocumentation = {
             delete: deleteCourse,
         },
     },
+    
     components: {
+        schemas: {
+            Course: {
+                type: 'object',
+                properties: {
+                    _id: { type: 'string' },
+                    courseName: { type: 'string' },
+                    courseImage: { type: 'string' },
+                },
+            },
+        },
         securitySchemes: {
             bearerAuth: {
                 type: 'http',
